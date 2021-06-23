@@ -12,9 +12,9 @@ for(1..$kpoint){
     `mkdir -p $path/kpoint/$_`;
     `mv $_.in $path/kpoint/$_`;
     `sed -e '/#SBATCH.*--job-name/d' $slurmbatch > $_.sh`;
-	`sed -i '/#sed_anchor01/a #SBATCH --job-name=k$_' $_.sh`;
-   	`sed -i '/#SBATCH.*--output/d' $_.sh`;
-	`sed -i '/#sed_anchor01/a #SBATCH --output=$_.out' $_.sh`;
+    `sed -i '/#sed_anchor01/a #SBATCH --job-name=k$_' $_.sh`;
+    `sed -i '/#SBATCH.*--output/d' $_.sh`;
+    `sed -i '/#sed_anchor01/a #SBATCH --output=$_.out' $_.sh`;
     `sed -i '/mpiexec.*/d'  $_.sh`;
     `sed -i '/#sed_anchor02/a $QE_path -in $_.in' $_.sh`;
     `mv $_.sh $path/kpoint/$_`; 
